@@ -2,19 +2,38 @@ package com.example.football_all_in_one;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
+
+import com.example.football_all_in_one.model.season_response.Season;
+import com.example.football_all_in_one.model.season_response.SeasonResponse;
+import com.example.football_all_in_one.model.season_response.SeasonResponseList;
+
+import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+import retrofit2.Retrofit;
+import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
+  private ApiFootball api;
+  private static final String BASE_URL = "https://v3.football.api-sports.io/";
 
-  int leagueId[] = new int[11];
-  String id[] = new String[11];
-  Button leagueButton[] = new Button[11];
-  Button teamsButton[] = new Button[11];
-  Button standingsButton[] = new Button[11];
-  View group[] = new View[11];
-  boolean groupVisible[] = new boolean[11];
+  public static final String EXTRA = "com.example.football_all_in_one_";
+
+  IdMap idMap = new IdMap();
+
+  private final int leagueNumber = idMap.getLeagueNumber();
+  Button[] leagueButton = new Button[leagueNumber];
+  Button[] teamsButton = new Button[leagueNumber];
+  Button[] standingsButton = new Button[leagueNumber];
+  View[] group = new View[leagueNumber];
+
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -27,83 +46,99 @@ public class MainActivity extends AppCompatActivity {
   }
 
   void initialize() {
-    id[0] = "champions_league";
-    id[1] = "la_liga";
-    id[2] = "premier_league";
-    id[3] = "fa_cup";
-    id[4] = "europa_league";
-    id[5] = "serie_a";
-    id[6] = "ligue1";
-    id[7] = "bundesliga";
-    id[8] = "copa_del_rey";
-    id[9] = "copa_america";
-    id[10] = "world_cup";
+    initializeApi();
 
-    for (int i = 0; i < 11; i++) {
-      String idString = id[i] + "_btn";
+    for (int i = 0; i < leagueNumber; i++) {
+      String idString = idMap.getLeagueName(i) + "_btn";
       int idInt = getResources().getIdentifier(idString, "id", getPackageName());
       leagueButton[i] = findViewById(idInt);
 
-      idString = id[i] + "_teams_btn";
+      idString = idMap.getLeagueName(i) + "_teams_btn";
       idInt = getResources().getIdentifier(idString, "id", getPackageName());
       teamsButton[i] = findViewById(idInt);
 
-      idString = id[i] + "_standings_btn";
+      idString = idMap.getLeagueName(i) + "_standings_btn";
       idInt = getResources().getIdentifier(idString, "id", getPackageName());
       standingsButton[i] = findViewById(idInt);
 
-      idString = id[i] + "_group";
+      idString = idMap.getLeagueName(i) + "_group";
       idInt = getResources().getIdentifier(idString, "id", getPackageName());
       group[i] = findViewById(idInt);
+
+//      didn't use in order to save api calls
+//      getSeason(i);
     }
   }
 
-  void visitTeamsPage(int leagueId) {
+  void initializeApi() {
+    Retrofit retrofit = new Retrofit.Builder()
+      .baseUrl(BASE_URL)
+      .addConverterFactory(GsonConverterFactory.create())
+      .build();
 
+    api = retrofit.create(ApiFootball.class);
   }
 
-  void visitStandingsPage(int leagueId) {
+  void getSeason(int idx) {
+    Call<SeasonResponse> call = api.getSeasonResponse(idMap.getLeagueId(idx),true);
+    call.enqueue(new Callback<SeasonResponse>() {
+      @Override
+      public void onResponse(Call<SeasonResponse> call, Response<SeasonResponse> response) {
+        if (!response.isSuccessful()) {
+          Toast.makeText(getApplicationContext(), "Code: " + response.code(), Toast.LENGTH_SHORT).show();
+          return;
+        }
 
+        SeasonResponse seasonResponse = response.body();
+        ArrayList<SeasonResponseList> seasonResponseList = seasonResponse.getSeasonResponseList();
+        ArrayList<Season> seasons = seasonResponseList.get(0).getSeasons();
+        int currentSeason = seasons.get(0).getYear();
+        idMap.setSeason(idx, currentSeason);
+      }
+
+      @Override
+      public void onFailure(Call<SeasonResponse> call, Throwable t) {
+        Toast.makeText(getApplicationContext(), t.getMessage(), Toast.LENGTH_SHORT).show();
+      }
+    });
+  }
+
+  void visitTeamsPage(int idx) {
+    Intent intent = new Intent(this, TeamsActivity.class);
+    intent.putExtra(EXTRA + "leagueId", idMap.getLeagueId(idx));
+    intent.putExtra(EXTRA + "season", idMap.getSeason(idx));
+    startActivity(intent);
+  }
+
+  void visitStandingsPage(int idx) {
+    Intent intent = new Intent(this, StandingsActivity.class);
+    intent.putExtra(EXTRA + "leagueId", idMap.getLeagueId(idx));
+    intent.putExtra(EXTRA + "season", idMap.getSeason(idx));
+    startActivity(intent);
   }
 
   void createOnclickListeners() {
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < leagueNumber; i++) {
       final int buttonId = i;
 
-      leagueButton[i].setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          hideAllGroups(buttonId);
-          if (groupVisible[buttonId]) {
-            group[buttonId].setVisibility(View.GONE);
-          } else {
-            group[buttonId].setVisibility(View.VISIBLE);
-          }
-          groupVisible[buttonId] ^= true;
+      leagueButton[i].setOnClickListener(v -> {
+        hideAllGroups(buttonId);
+        if (group[buttonId].getVisibility() == View.VISIBLE) {
+          group[buttonId].setVisibility(View.GONE);
+        } else {
+          group[buttonId].setVisibility(View.VISIBLE);
         }
       });
 
-      teamsButton[i].setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          visitTeamsPage(leagueId[buttonId]);
-        }
-      });
-
-      standingsButton[i].setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-          visitStandingsPage(leagueId[buttonId]);
-        }
-      });
+      teamsButton[i].setOnClickListener(v -> visitTeamsPage(buttonId));
+      standingsButton[i].setOnClickListener(v -> visitStandingsPage(buttonId));
     }
   }
 
   void hideAllGroups(int except) {
-    for (int i = 0; i < 11; i++) {
+    for (int i = 0; i < leagueNumber; i++) {
       if (i == except) continue;
       group[i].setVisibility(View.GONE);
-      groupVisible[i] = false;
     }
   }
 }
