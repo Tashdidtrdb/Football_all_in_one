@@ -8,13 +8,11 @@ public class FixturesResponseList {
     private Fixture fixture;
     private Teams teams;
     private Goals goals;
-    private Score score;
 
-    public FixturesResponseList(Fixture fixture, Teams teams, Goals goals, Score score) {
+    public FixturesResponseList(Fixture fixture, Teams teams, Goals goals) {
         this.fixture = fixture;
         this.teams = teams;
         this.goals = goals;
-        this.score = score;
     }
 
     public Fixture getFixture() { return fixture; }
@@ -22,6 +20,4 @@ public class FixturesResponseList {
     public Teams getTeams() { return teams; }
 
     public Goals getGoals() { return goals; }
-
-    public Score getScore() { return score; }
 }

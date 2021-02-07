@@ -5,18 +5,19 @@ import com.google.gson.annotations.SerializedName;
 public class Cards {
     private int yellow;
     private int red;
-    private int yellowred;
+    @SerializedName("yellowred")
+    private int yellowRed;
 
-    public Cards(int yellow, int red, int yellowred) {
+    public Cards(int yellow, int red, int yellowRed) {
         this.yellow = yellow;
         this.red = red;
-        this.yellowred = yellowred;
+        this.yellowRed = yellowRed;
     }
 
     public int getYellow() { return yellow; }
 
     public int getRed() { return red; }
 
-    public int getYellowred() { return yellowred; }
+    public int getYellowRed() { return yellowRed; }
 }
 

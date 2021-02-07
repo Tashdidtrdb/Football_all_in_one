@@ -9,19 +9,26 @@ public class PlayersStatistics {
     private Penalty penalty;
     private Cards cards;
 
-    public PlayersStatistics(Games games) { this.games = games; }
+    public PlayersStatistics(Games games, Goals goals, Penalty penalty, Cards cards) {
+        this.games = games;
+        this.goals = goals;
+        this.penalty = penalty;
+        this.cards = cards;
+    }
 
-    public PlayersStatistics(Cards cards) { this.cards = cards; }
+    public Games getGames() {
+        return games;
+    }
 
-    public PlayersStatistics(Goals goals) { this.goals = goals; }
+    public Goals getGoals() {
+        return goals;
+    }
 
-    public PlayersStatistics(Penalty penalty) { this.penalty = penalty; }
+    public Penalty getPenalty() {
+        return penalty;
+    }
 
-    public Games getGames() { return games; }
-
-    public Cards getCards() { return cards; }
-
-    public Goals getGoals() { return goals; }
-
-    public Penalty getPenalty() { return penalty; }
+    public Cards getCards() {
+        return cards;
+    }
 }

@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     createOnclickListeners();
   }
 
-  void initialize() {
+  private void initialize() {
     initializeApi();
 
     for (int i = 0; i < leagueNumber; i++) {
@@ -70,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
-  void initializeApi() {
+  private void initializeApi() {
     Retrofit retrofit = new Retrofit.Builder()
       .baseUrl(BASE_URL)
       .addConverterFactory(GsonConverterFactory.create())
@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
     api = retrofit.create(ApiFootball.class);
   }
 
-  void getSeason(int idx) {
+  private void getSeason(int idx) {
     Call<SeasonResponse> call = api.getSeasonResponse(idMap.getLeagueId(idx),true);
     call.enqueue(new Callback<SeasonResponse>() {
       @Override
@@ -103,21 +103,21 @@ public class MainActivity extends AppCompatActivity {
     });
   }
 
-  void visitTeamsPage(int idx) {
+  private void visitTeamsPage(int idx) {
     Intent intent = new Intent(this, TeamsActivity.class);
     intent.putExtra(EXTRA + "leagueId", idMap.getLeagueId(idx));
     intent.putExtra(EXTRA + "season", idMap.getSeason(idx));
     startActivity(intent);
   }
 
-  void visitStandingsPage(int idx) {
+  private void visitStandingsPage(int idx) {
     Intent intent = new Intent(this, StandingsActivity.class);
     intent.putExtra(EXTRA + "leagueId", idMap.getLeagueId(idx));
     intent.putExtra(EXTRA + "season", idMap.getSeason(idx));
     startActivity(intent);
   }
 
-  void createOnclickListeners() {
+  private void createOnclickListeners() {
     for (int i = 0; i < leagueNumber; i++) {
       final int buttonId = i;
 
@@ -135,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
     }
   }
 
-  void hideAllGroups(int except) {
+  private void hideAllGroups(int except) {
     for (int i = 0; i < leagueNumber; i++) {
       if (i == except) continue;
       group[i].setVisibility(View.GONE);

@@ -4,10 +4,10 @@ import java.util.ArrayList;
 
 public class FixtureLineupResponseList {
     private String formation;
-    private ArrayList<StartXI> startXI;
-    private ArrayList<Substitutes> substitutes;
+    private ArrayList<Player> startXI;
+    private ArrayList<Player> substitutes;
 
-    public FixtureLineupResponseList(String formation, ArrayList<StartXI> startXI, ArrayList<Substitutes> substitutes) {
+    public FixtureLineupResponseList(String formation, ArrayList<Player> startXI, ArrayList<Player> substitutes) {
         this.formation = formation;
         this.startXI = startXI;
         this.substitutes = substitutes;
@@ -15,7 +15,7 @@ public class FixtureLineupResponseList {
 
     public String getFormation() { return formation; }
 
-    public ArrayList<StartXI> getStartXI() { return startXI; }
+    public ArrayList<Player> getStartXI() { return startXI; }
 
-    public ArrayList<Substitutes> getSubstitutes() { return substitutes; }
+    public ArrayList<Player> getSubstitutes() { return substitutes; }
 }

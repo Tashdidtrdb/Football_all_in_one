@@ -1,6 +1,7 @@
 package com.example.football_all_in_one;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,12 +16,17 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class StandingListAdapter extends RecyclerView.Adapter<StandingListAdapter.StandingListViewHolder> {
+  public static final String EXTRA = "com.example.football_all_in_one_";
+
   private Context context;
   private List<StandingListItem> standingListItems;
+  private int leagueId, season;
 
-  public StandingListAdapter(Context context, List<StandingListItem> standingListItems) {
+  public StandingListAdapter(Context context, List<StandingListItem> standingListItems, int leagueId, int season) {
     this.context = context;
     this.standingListItems = standingListItems;
+    this.leagueId = leagueId;
+    this.season = season;
   }
 
   @NonNull
@@ -39,6 +45,8 @@ public class StandingListAdapter extends RecyclerView.Adapter<StandingListAdapte
     holder.points.setText(standingListItem.getPoints());
     holder.group.setText(standingListItem.getGroup());
     Glide.with(context).load(standingListItem.getTeamLogo()).into(holder.teamLogo);
+
+    holder.itemView.setOnClickListener(v -> visitStatisticsPage(standingListItem.getTeamId(), leagueId, season));
   }
 
   @Override
@@ -58,5 +66,12 @@ public class StandingListAdapter extends RecyclerView.Adapter<StandingListAdapte
       points = itemView.findViewById(R.id.points);
       group = itemView.findViewById(R.id.group);
     }
+  }
+
+  private void visitStatisticsPage(int teamId, int leagueId, int season) {
+    Intent intent = new Intent(context, StatisticsActivity.class);
+    intent.putExtra(EXTRA + "leagueId", leagueId);
+    intent.putExtra(EXTRA + "season", season);
+    context.startActivity(intent);
   }
 }

@@ -25,56 +25,45 @@ public class StandingsActivity extends AppCompatActivity {
     setLeagueImg(leagueId);
 
     List<StandingListItem> standingListItems = new ArrayList<>();
-    standingListItems.add(new StandingListItem("1","Athletico Madrid", "https://media.api-sports.io/football/teams/530.png", "32", "N/A"));
-    standingListItems.add(new StandingListItem("2","Real Madrid", "https://media.api-sports.io/football/teams/541.png", "32", "N/A"));
-    standingListItems.add(new StandingListItem("3","Real Sociedad", "https://media.api-sports.io/football/teams/548.png", "26", "N/A"));
-    standingListItems.add(new StandingListItem("4","Villarreal", "https://media.api-sports.io/football/teams/533.png", "26", "N/A"));
-    standingListItems.add(new StandingListItem("5","Barcelona", "https://media.api-sports.io/football/teams/529.png", "24", "N/A"));
-    standingListItems.add(new StandingListItem("6","Sevilla", "https://media.api-sports.io/football/teams/536.png", "23", "N/A"));
-    standingListItems.add(new StandingListItem("7","Granada CF", "https://media.api-sports.io/football/teams/715.png", "21", "N/A"));
-    standingListItems.add(new StandingListItem("8","Celta Vigo", "https://media.api-sports.io/football/teams/538.png", "20", "N/A"));
-    standingListItems.add(new StandingListItem("9","Real Betis", "https://media.api-sports.io/football/teams/543.png", "19", "N/A"));
-    standingListItems.add(new StandingListItem("10","Athletic Club", "https://media.api-sports.io/football/teams/531.png", "18", "N/A"));
+    standingListItems.add(new StandingListItem(1,"1","Athletico Madrid", "https://media.api-sports.io/football/teams/530.png", "32", "N/A"));
+    standingListItems.add(new StandingListItem(1,"2","Real Madrid", "https://media.api-sports.io/football/teams/541.png", "32", "N/A"));
+    standingListItems.add(new StandingListItem(1, "3","Real Sociedad", "https://media.api-sports.io/football/teams/548.png", "26", "N/A"));
+    standingListItems.add(new StandingListItem(1,"4","Villarreal", "https://media.api-sports.io/football/teams/533.png", "26", "N/A"));
+    standingListItems.add(new StandingListItem(1,"5","Barcelona", "https://media.api-sports.io/football/teams/529.png", "24", "N/A"));
+    standingListItems.add(new StandingListItem(1,"6","Sevilla", "https://media.api-sports.io/football/teams/536.png", "23", "N/A"));
+    standingListItems.add(new StandingListItem(1,"7","Granada CF", "https://media.api-sports.io/football/teams/715.png", "21", "N/A"));
+    standingListItems.add(new StandingListItem(1,"8","Celta Vigo", "https://media.api-sports.io/football/teams/538.png", "20", "N/A"));
+    standingListItems.add(new StandingListItem(1,"9","Real Betis", "https://media.api-sports.io/football/teams/543.png", "19", "N/A"));
+    standingListItems.add(new StandingListItem(1,"10","Athletic Club", "https://media.api-sports.io/football/teams/531.png", "18", "N/A"));
 
-    standingListItems.add(new StandingListItem("1","Athletico Madrid", "https://media.api-sports.io/football/teams/530.png", "32", "N/A"));
-    standingListItems.add(new StandingListItem("2","Real Madrid", "https://media.api-sports.io/football/teams/541.png", "32", "N/A"));
-    standingListItems.add(new StandingListItem("3","Real Sociedad", "https://media.api-sports.io/football/teams/548.png", "26", "N/A"));
-    standingListItems.add(new StandingListItem("4","Villarreal", "https://media.api-sports.io/football/teams/533.png", "26", "N/A"));
-    standingListItems.add(new StandingListItem("5","Barcelona", "https://media.api-sports.io/football/teams/529.png", "24", "N/A"));
-    standingListItems.add(new StandingListItem("6","Sevilla", "https://media.api-sports.io/football/teams/536.png", "23", "N/A"));
-    standingListItems.add(new StandingListItem("7","Granada CF", "https://media.api-sports.io/football/teams/715.png", "21", "N/A"));
-    standingListItems.add(new StandingListItem("8","Celta Vigo", "https://media.api-sports.io/football/teams/538.png", "20", "N/A"));
-    standingListItems.add(new StandingListItem("9","Real Betis", "https://media.api-sports.io/football/teams/543.png", "19", "N/A"));
-    standingListItems.add(new StandingListItem("10","Athletic Club", "https://media.api-sports.io/football/teams/531.png", "18", "N/A"));
+    standingListItems.add(new StandingListItem(1,"1","Athletico Madrid", "https://media.api-sports.io/football/teams/530.png", "32", "N/A"));
+    standingListItems.add(new StandingListItem(1,"2","Real Madrid", "https://media.api-sports.io/football/teams/541.png", "32", "N/A"));
+    standingListItems.add(new StandingListItem(1, "3","Real Sociedad", "https://media.api-sports.io/football/teams/548.png", "26", "N/A"));
+    standingListItems.add(new StandingListItem(1,"4","Villarreal", "https://media.api-sports.io/football/teams/533.png", "26", "N/A"));
+    standingListItems.add(new StandingListItem(1,"5","Barcelona", "https://media.api-sports.io/football/teams/529.png", "24", "N/A"));
+    standingListItems.add(new StandingListItem(1,"6","Sevilla", "https://media.api-sports.io/football/teams/536.png", "23", "N/A"));
+    standingListItems.add(new StandingListItem(1,"7","Granada CF", "https://media.api-sports.io/football/teams/715.png", "21", "N/A"));
+    standingListItems.add(new StandingListItem(1,"8","Celta Vigo", "https://media.api-sports.io/football/teams/538.png", "20", "N/A"));
+    standingListItems.add(new StandingListItem(1,"9","Real Betis", "https://media.api-sports.io/football/teams/543.png", "19", "N/A"));
+    standingListItems.add(new StandingListItem(1,"10","Athletic Club", "https://media.api-sports.io/football/teams/531.png", "18", "N/A"));
 
-    standingListItems.add(new StandingListItem("1","Athletico Madrid", "https://media.api-sports.io/football/teams/530.png", "32", "N/A"));
-    standingListItems.add(new StandingListItem("2","Real Madrid", "https://media.api-sports.io/football/teams/541.png", "32", "N/A"));
-    standingListItems.add(new StandingListItem("3","Real Sociedad", "https://media.api-sports.io/football/teams/548.png", "26", "N/A"));
-    standingListItems.add(new StandingListItem("4","Villarreal", "https://media.api-sports.io/football/teams/533.png", "26", "N/A"));
-    standingListItems.add(new StandingListItem("5","Barcelona", "https://media.api-sports.io/football/teams/529.png", "24", "N/A"));
-    standingListItems.add(new StandingListItem("6","Sevilla", "https://media.api-sports.io/football/teams/536.png", "23", "N/A"));
-    standingListItems.add(new StandingListItem("7","Granada CF", "https://media.api-sports.io/football/teams/715.png", "21", "N/A"));
-    standingListItems.add(new StandingListItem("8","Celta Vigo", "https://media.api-sports.io/football/teams/538.png", "20", "N/A"));
-    standingListItems.add(new StandingListItem("9","Real Betis", "https://media.api-sports.io/football/teams/543.png", "19", "N/A"));
-    standingListItems.add(new StandingListItem("10","Athletic Club", "https://media.api-sports.io/football/teams/531.png", "18", "N/A"));
-
-    standingListItems.add(new StandingListItem("1","Athletico Madrid", "https://media.api-sports.io/football/teams/530.png", "32", "N/A"));
-    standingListItems.add(new StandingListItem("2","Real Madrid", "https://media.api-sports.io/football/teams/541.png", "32", "N/A"));
-    standingListItems.add(new StandingListItem("3","Real Sociedad", "https://media.api-sports.io/football/teams/548.png", "26", "N/A"));
-    standingListItems.add(new StandingListItem("4","Villarreal", "https://media.api-sports.io/football/teams/533.png", "26", "N/A"));
-    standingListItems.add(new StandingListItem("5","Barcelona", "https://media.api-sports.io/football/teams/529.png", "24", "N/A"));
-    standingListItems.add(new StandingListItem("6","Sevilla", "https://media.api-sports.io/football/teams/536.png", "23", "N/A"));
-    standingListItems.add(new StandingListItem("7","Granada CF", "https://media.api-sports.io/football/teams/715.png", "21", "N/A"));
-    standingListItems.add(new StandingListItem("8","Celta Vigo", "https://media.api-sports.io/football/teams/538.png", "20", "N/A"));
-    standingListItems.add(new StandingListItem("9","Real Betis", "https://media.api-sports.io/football/teams/543.png", "19", "N/A"));
-    standingListItems.add(new StandingListItem("10","Athletic Club", "https://media.api-sports.io/football/teams/531.png", "18", "N/A"));
+    standingListItems.add(new StandingListItem(1,"1","Athletico Madrid", "https://media.api-sports.io/football/teams/530.png", "32", "N/A"));
+    standingListItems.add(new StandingListItem(1,"2","Real Madrid", "https://media.api-sports.io/football/teams/541.png", "32", "N/A"));
+    standingListItems.add(new StandingListItem(1, "3","Real Sociedad", "https://media.api-sports.io/football/teams/548.png", "26", "N/A"));
+    standingListItems.add(new StandingListItem(1,"4","Villarreal", "https://media.api-sports.io/football/teams/533.png", "26", "N/A"));
+    standingListItems.add(new StandingListItem(1,"5","Barcelona", "https://media.api-sports.io/football/teams/529.png", "24", "N/A"));
+    standingListItems.add(new StandingListItem(1,"6","Sevilla", "https://media.api-sports.io/football/teams/536.png", "23", "N/A"));
+    standingListItems.add(new StandingListItem(1,"7","Granada CF", "https://media.api-sports.io/football/teams/715.png", "21", "N/A"));
+    standingListItems.add(new StandingListItem(1,"8","Celta Vigo", "https://media.api-sports.io/football/teams/538.png", "20", "N/A"));
+    standingListItems.add(new StandingListItem(1,"9","Real Betis", "https://media.api-sports.io/football/teams/543.png", "19", "N/A"));
+    standingListItems.add(new StandingListItem(1,"10","Athletic Club", "https://media.api-sports.io/football/teams/531.png", "18", "N/A"));
 
     RecyclerView standingList = findViewById(R.id.standing_list);
     standingList.setLayoutManager(new LinearLayoutManager(this));
-    standingList.setAdapter(new StandingListAdapter(this, standingListItems));
+    standingList.setAdapter(new StandingListAdapter(this, standingListItems, leagueId, season));
   }
 
-  void setLeagueImg(int leagueId) {
+  private void setLeagueImg(int leagueId) {
     IdMap idMap = new IdMap();
     ImageView leagueHighlight = findViewById(R.id.league_highlight);
     leagueHighlight.setImageResource(idMap.getImgOfLeague(leagueId));

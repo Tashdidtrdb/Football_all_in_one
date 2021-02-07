@@ -4,17 +4,19 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class Teams {
-    @SerializedName("home")
-    private Home_teams home_teams;
-    @SerializedName("away")
-    private Away_teams away_teams;
+    private Team home;
+    private Team away;
 
-    public Teams(Home_teams home_teams, Away_teams away_teams) {
-        this.home_teams = home_teams;
-        this.away_teams = away_teams;
+    public Teams(Team home, Team away) {
+        this.home = home;
+        this.away = away;
     }
 
-    public Home_teams getHome_teams() { return home_teams; }
+    public Team getHome() {
+        return home;
+    }
 
-    public Away_teams getAway_teams() { return away_teams; }
+    public Team getAway() {
+        return away;
+    }
 }

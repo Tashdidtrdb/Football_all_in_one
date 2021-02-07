@@ -2,14 +2,14 @@ package com.example.football_all_in_one.model.team_statistics_for_a_fixture_resp
 
 public class Statistics {
     private String type;
-    private String value;
+    private int value;
 
-    public Statistics(String type, String value) {
+    public Statistics(String type, int value) {
         this.type = type;
         this.value = value;
     }
 
     public String getType() { return type; }
 
-    public String getValue() { return value; }
+    public int getValue() { return value; }
 }

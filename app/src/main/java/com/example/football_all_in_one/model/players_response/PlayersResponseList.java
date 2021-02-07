@@ -5,16 +5,16 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class PlayersResponseList {
-    private Players player;
+    private Player player;
     @SerializedName("statistics")
     private ArrayList<PlayersStatistics> playersStatistics;
-    public PlayersResponseList(Players player) {
+
+    public PlayersResponseList(Player player, ArrayList<PlayersStatistics> playersStatistics) {
         this.player = player;
+        this.playersStatistics = playersStatistics;
     }
 
-    public PlayersResponseList(ArrayList<PlayersStatistics> playersStatistics) { this.playersStatistics = playersStatistics; }
-
-    public Players getPlayer() { return player; }
+    public Player getPlayer() { return player; }
 
     public ArrayList<PlayersStatistics> getPlayersStatistics() { return playersStatistics; }
 }

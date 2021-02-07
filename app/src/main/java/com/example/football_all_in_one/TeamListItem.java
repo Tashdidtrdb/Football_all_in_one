@@ -1,7 +1,6 @@
 package com.example.football_all_in_one;
 
 public class TeamListItem {
-  private int leagueId;
   private int teamId;
   private String teamName;
   private String teamLogo;
@@ -13,8 +12,7 @@ public class TeamListItem {
   private String venueCity;
   private String venueCapacity;
 
-  public TeamListItem(int leagueId, int teamId, String teamName, String teamLogo, String founded, String country, String national, String venueName, String venueAddress, String venueCity, String venueCapacity) {
-    this.leagueId = leagueId;
+  public TeamListItem(int teamId, String teamName, String teamLogo, String founded, String country, String national, String venueName, String venueAddress, String venueCity, String venueCapacity) {
     this.teamId = teamId;
     this.teamName = teamName;
     this.teamLogo = teamLogo;
@@ -25,10 +23,6 @@ public class TeamListItem {
     this.venueAddress = venueAddress;
     this.venueCity = venueCity;
     this.venueCapacity = venueCapacity;
-  }
-
-  public int getLeagueId() {
-    return leagueId;
   }
 
   public int getTeamId() {

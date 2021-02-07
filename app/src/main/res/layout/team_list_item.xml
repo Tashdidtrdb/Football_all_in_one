@@ -182,6 +182,18 @@
         android:layout_height="25dp"
         android:background="@drawable/stats_button"
         app:layout_constraintBottom_toBottomOf="@+id/venue_city"
+        app:layout_constraintEnd_toStartOf="@id/fixtures_button"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/venue_city"
+        app:layout_constraintTop_toTopOf="@+id/venue_city"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/fixtures_button"
+        android:layout_width="50dp"
+        android:layout_height="25dp"
+        android:background="@drawable/fixtures_button"
+        app:layout_constraintBottom_toBottomOf="@+id/venue_city"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/venue_capacity"
@@ -196,7 +208,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/venue_city"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/stats_button"
+        app:layout_constraintStart_toEndOf="@+id/fixtures_button"
         app:layout_constraintTop_toTopOf="@+id/venue_city"
         app:layout_constraintVertical_bias="0.0" />
 
@@ -205,6 +217,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:visibility="gone"
-        app:constraint_referenced_ids="info,founded,country,national,venue,venue_name,venue_address,venue_city,venue_capacity,stats_button,players_button" />
+        app:constraint_referenced_ids="info,founded,country,national,venue,venue_name,venue_address,venue_city,venue_capacity,stats_button,fixtures_button,players_button" />
 </androidx.constraintlayout.widget.ConstraintLayout>
 

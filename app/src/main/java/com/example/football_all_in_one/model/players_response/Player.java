@@ -1,6 +1,6 @@
 package com.example.football_all_in_one.model.players_response;
 
-public class Players {
+public class Player {
     private int id;
     private String name;
     private int age;
@@ -8,10 +8,10 @@ public class Players {
     private String nationality;
     private String height;
     private String weight;
-    private Boolean injured;
+    private boolean injured;
     private Birth birth;
 
-    public Players(int id, String name, int age, String photo, String nationality, String height, String weight, Boolean injured) {
+    public Player(int id, String name, int age, String photo, String nationality, String height, String weight, Boolean injured) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -22,7 +22,7 @@ public class Players {
         this.injured = injured;
     }
 
-    public Players(Birth birth) {
+    public Player(Birth birth) {
         this.birth = birth;
     }
 
@@ -40,7 +40,9 @@ public class Players {
 
     public String getWeight() { return weight; }
 
-    public Boolean getInjured() { return injured; }
+    public boolean isInjured() {
+        return injured;
+    }
 
     public Birth getBirth() { return birth; }
 }

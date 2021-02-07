@@ -28,20 +28,20 @@ public class TeamsActivity extends AppCompatActivity {
     setLeagueImg(leagueId);
 
     List<TeamListItem> teamListItems = new ArrayList<>();
-    teamListItems.add(new TeamListItem(1,1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
-    teamListItems.add(new TeamListItem(1,1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
-    teamListItems.add(new TeamListItem(1,1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
-    teamListItems.add(new TeamListItem(1,1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
-    teamListItems.add(new TeamListItem(1,1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
-    teamListItems.add(new TeamListItem(1,1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
-    teamListItems.add(new TeamListItem(1,1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
+    teamListItems.add(new TeamListItem(1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
+    teamListItems.add(new TeamListItem(1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
+    teamListItems.add(new TeamListItem(1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
+    teamListItems.add(new TeamListItem(1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
+    teamListItems.add(new TeamListItem(1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
+    teamListItems.add(new TeamListItem(1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
+    teamListItems.add(new TeamListItem(1,"Manchester United", "https://media.api-sports.io/football/teams/33.png", "Founded: 1878", "Country: England", "National: No", "Name: Old Trafford", "Address: Sir Matt Busby Way", "City: Manchester", "Capacity: 76212"));
 
     RecyclerView teamList = findViewById(R.id.team_list);
     teamList.setLayoutManager(new LinearLayoutManager(this));
-    teamList.setAdapter(new TeamListAdapter(this, teamListItems));
+    teamList.setAdapter(new TeamListAdapter(this, teamListItems, leagueId, season));
   }
 
-  void setLeagueImg(int leagueId) {
+  private void setLeagueImg(int leagueId) {
     IdMap idMap = new IdMap();
     ImageView leagueHighlight = findViewById(R.id.league_highlight);
     leagueHighlight.setImageResource(idMap.getImgOfLeague(leagueId));
