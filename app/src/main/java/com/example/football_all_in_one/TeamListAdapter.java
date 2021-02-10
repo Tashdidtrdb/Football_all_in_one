@@ -1,5 +1,6 @@
 package com.example.football_all_in_one;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.view.LayoutInflater;
@@ -15,12 +16,12 @@ import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.football_all_in_one.model.teams_response.Team;
+import com.example.football_all_in_one.model.teams_response.Venue;
 
 import java.util.List;
 
 public class TeamListAdapter extends RecyclerView.Adapter<TeamListAdapter.TeamListViewHolder> {
-  public static final String EXTRA = "com.example.football_all_in_one_";
-
   private Context context;
   private List<TeamListItem> teamListItems;
   private int leagueId, season;
@@ -40,18 +41,22 @@ public class TeamListAdapter extends RecyclerView.Adapter<TeamListAdapter.TeamLi
     return new TeamListViewHolder(view);
   }
 
+  @SuppressLint("SetTextI18n")
   @Override
   public void onBindViewHolder(@NonNull TeamListViewHolder holder, int position) {
     TeamListItem teamListItem = teamListItems.get(position);
-    holder.teamName.setText(teamListItem.getTeamName());
-    holder.founded.setText(teamListItem.getFounded());
-    holder.country.setText(teamListItem.getCountry());
-    holder.national.setText(teamListItem.getNational());
-    holder.venueName.setText(teamListItem.getVenueName());
-    holder.venueAddress.setText(teamListItem.getVenueAddress());
-    holder.venueCity.setText(teamListItem.getVenueCity());
-    holder.venueCapacity.setText(teamListItem.getVenueCapacity());
-    Glide.with(context).load(teamListItem.getTeamLogo()).into(holder.teamLogo);
+    Team team = teamListItem.getTeam();
+    Venue venue = teamListItem.getVenue();
+
+    holder.teamName.setText(team.getName());
+    holder.founded.setText("Founded: " + team.getFounded());
+    holder.country.setText("Country: " + team.getCountry());
+    holder.national.setText("National: " + (team.getNational() ? "Yes" : "No"));
+    holder.venueName.setText("Name: " + venue.getName());
+    holder.venueAddress.setText("Address: " + venue.getAddress());
+    holder.venueCity.setText("City: " + venue.getCity());
+    holder.venueCapacity.setText("Capacity: " + venue.getCapacity());
+    Glide.with(context).load(team.getLogo()).into(holder.teamLogo);
 
     holder.itemView.setOnClickListener(v -> {
       if (holder.detailsGroup.getVisibility() == View.VISIBLE) {
@@ -63,9 +68,11 @@ public class TeamListAdapter extends RecyclerView.Adapter<TeamListAdapter.TeamLi
       }
     });
 
-    holder.statsButton.setOnClickListener(v -> visitStatisticsPage(teamListItem.getTeamId(), leagueId, season));
+    holder.statsButton.setOnClickListener(v -> visitStatisticsPage(team.getId(), team.getLogo(), leagueId, season));
 
-    holder.fixturesButton.setOnClickListener(v -> visitFixturesPage(teamListItem.getTeamId(), leagueId, season));
+    holder.fixturesButton.setOnClickListener(v -> visitFixturesPage(team.getId(), leagueId, season));
+
+    holder.playersButton.setOnClickListener(v -> visitPlayersPage(team.getId(), team.getLogo(), leagueId, season));
   }
 
   @Override
@@ -99,17 +106,29 @@ public class TeamListAdapter extends RecyclerView.Adapter<TeamListAdapter.TeamLi
     }
   }
 
-  private void visitStatisticsPage(int teamId, int leagueId, int season) {
+  private void visitStatisticsPage(int teamId, String teamLogo, int leagueId, int season) {
     Intent intent = new Intent(context, StatisticsActivity.class);
-    intent.putExtra(EXTRA + "leagueId", leagueId);
-    intent.putExtra(EXTRA + "season", season);
+    intent.putExtra(MainActivity.EXTRA + "teamId", teamId);
+    intent.putExtra(MainActivity.EXTRA + "teamLogo", teamLogo);
+    intent.putExtra(MainActivity.EXTRA + "leagueId", leagueId);
+    intent.putExtra(MainActivity.EXTRA + "season", season);
     context.startActivity(intent);
   }
 
   private void visitFixturesPage(int teamId, int leagueId, int season) {
     Intent intent = new Intent(context, FixturesActivity.class);
-    intent.putExtra(EXTRA + "leagueId", leagueId);
-    intent.putExtra(EXTRA + "season", season);
+    intent.putExtra(MainActivity.EXTRA + "teamId", teamId);
+    intent.putExtra(MainActivity.EXTRA + "leagueId", leagueId);
+    intent.putExtra(MainActivity.EXTRA + "season", season);
+    context.startActivity(intent);
+  }
+
+  private void visitPlayersPage(int teamId, String teamLogo, int leagueId, int season) {
+    Intent intent = new Intent(context, PlayersActivity.class);
+    intent.putExtra(MainActivity.EXTRA + "teamId", teamId);
+    intent.putExtra(MainActivity.EXTRA + "teamLogo", teamLogo);
+    intent.putExtra(MainActivity.EXTRA + "leagueId", leagueId);
+    intent.putExtra(MainActivity.EXTRA + "season", season);
     context.startActivity(intent);
   }
 }

@@ -21,7 +21,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-  private ApiFootball api;
+  public static ApiFootball api;
   private static final String BASE_URL = "https://v3.football.api-sports.io/";
 
   public static final String EXTRA = "com.example.football_all_in_one_";
@@ -33,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
   Button[] teamsButton = new Button[leagueNumber];
   Button[] standingsButton = new Button[leagueNumber];
   View[] group = new View[leagueNumber];
-
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {

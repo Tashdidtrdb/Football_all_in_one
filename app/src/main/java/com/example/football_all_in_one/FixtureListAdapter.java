@@ -88,8 +88,8 @@ public class FixtureListAdapter extends RecyclerView.Adapter<FixtureListAdapter.
       holder.statsValueAway[i].setText(String.valueOf(awayStats.get(i).getValue()));
     }
 
-    holder.homeFormation.setText(homeFormation);
-    holder.awayFormation.setText(awayFormation);
+    holder.homeFormation.setText("Formation: " + homeFormation);
+    holder.awayFormation.setText("Formation: " + awayFormation);
 
     for (int i = 0; i < 11; i++) {
       holder.homeStartingNumber[i].setText(String.valueOf(homeStartingXI.get(i).getNumber()));

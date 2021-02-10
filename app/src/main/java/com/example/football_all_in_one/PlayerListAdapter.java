@@ -1,5 +1,6 @@
 package com.example.football_all_in_one;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -26,6 +27,11 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Pl
   Context context;
   List<PlayerListItem> playerListItems;
 
+  public PlayerListAdapter(Context context, List<PlayerListItem> playerListItems) {
+    this.context = context;
+    this.playerListItems = playerListItems;
+  }
+
   @NonNull
   @Override
   public PlayerListViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -34,6 +40,7 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Pl
     return new PlayerListViewHolder(view);
   }
 
+  @SuppressLint("SetTextI18n")
   @Override
   public void onBindViewHolder(@NonNull PlayerListViewHolder holder, int position) {
     PlayerListItem playerListItem = playerListItems.get(position);
@@ -44,30 +51,30 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Pl
     Cards cards = playerListItem.getCards();
     Penalty penalty = playerListItem.getPenalty();
 
-    holder.playerNumber.setText(String.valueOf(games.getNumber()));
+//    holder.playerNumber.setText(String.valueOf(games.getNumber()));
     holder.playerName.setText(player.getName());
     holder.playerPosition.setText(games.getPosition());
-    holder.age.setText(String.valueOf(player.getAge()));
-    holder.height.setText(player.getHeight());
-    holder.weight.setText(player.getWeight());
-    holder.nationality.setText(player.getNationality());
-    holder.injured.setText(player.isInjured() ? "Yes" : "No");
-    holder.birthDate.setText(birth.getDate());
-    holder.birthPlace.setText(birth.getPlace());
-    holder.birthCountry.setText(birth.getCountry());
-    holder.appearances.setText(String.valueOf(games.getAppearances()));
-    holder.lineups.setText(String.valueOf(games.getLineups()));
-    holder.rating.setText(games.getRating());
-    holder.captain.setText(games.isCaptain() ? "Yes" : "No");
-    holder.goalsScored.setText(String.valueOf(goals.getTotal()));
-    holder.goalsAssists.setText(String.valueOf(goals.getAssists()));
-    holder.goalsSaved.setText(String.valueOf(goals.getSaves()));
-    holder.yellowCards.setText(String.valueOf(cards.getYellow()));
-    holder.redCards.setText(String.valueOf(cards.getRed()));
-    holder.yellowRedCards.setText(String.valueOf(cards.getYellowRed()));
-    holder.penaltyScored.setText(String.valueOf(penalty.getScored()));
-    holder.penaltyMissed.setText(String.valueOf(penalty.getMissed()));
-    holder.penaltySaved.setText(String.valueOf(penalty.getSaved()));
+    holder.age.setText("Age: " + String.valueOf(player.getAge()));
+    holder.height.setText("Height: " + player.getHeight());
+    holder.weight.setText("Weight: " + player.getWeight());
+    holder.nationality.setText("Nationality: " + player.getNationality());
+    holder.injured.setText("Injured: " + (player.isInjured() ? "Yes" : "No"));
+    holder.birthDate.setText("Date: " + birth.getDate());
+    holder.birthPlace.setText("Place: " + birth.getPlace());
+    holder.birthCountry.setText("Country: " + birth.getCountry());
+    holder.appearances.setText("Appearances: " + String.valueOf(games.getAppearances()));
+    holder.lineups.setText("Lineups: " + String.valueOf(games.getLineups()));
+    holder.rating.setText("Rating: " + games.getRating());
+    holder.captain.setText("Captain: " + (games.isCaptain() ? "Yes" : "No"));
+    holder.goalsScored.setText("Scored: " + String.valueOf(goals.getTotal()));
+    holder.goalsAssists.setText("Assists: " + String.valueOf(goals.getAssists()));
+    holder.goalsSaved.setText("Saves: " + String.valueOf(goals.getSaves()));
+    holder.yellowCards.setText("Yellow: " + String.valueOf(cards.getYellow()));
+    holder.redCards.setText("Red: " + String.valueOf(cards.getRed()));
+    holder.yellowRedCards.setText("Yellow Red: " + String.valueOf(cards.getYellowRed()));
+    holder.penaltyScored.setText("Scored: " + String.valueOf(penalty.getScored()));
+    holder.penaltyMissed.setText("Missed: " + String.valueOf(penalty.getMissed()));
+    holder.penaltySaved.setText("Saved: " + String.valueOf(penalty.getSaved()));
     Glide.with(context).load(player.getPhoto()).into(holder.playerImg);
 
     holder.itemView.setOnClickListener(v -> {

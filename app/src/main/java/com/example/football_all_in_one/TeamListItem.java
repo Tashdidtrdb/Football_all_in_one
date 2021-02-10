@@ -1,67 +1,22 @@
 package com.example.football_all_in_one;
 
+import com.example.football_all_in_one.model.teams_response.Team;
+import com.example.football_all_in_one.model.teams_response.Venue;
+
 public class TeamListItem {
-  private int teamId;
-  private String teamName;
-  private String teamLogo;
-  private String founded;
-  private String country;
-  private String national;
-  private String venueName;
-  private String venueAddress;
-  private String venueCity;
-  private String venueCapacity;
+  private Team team;
+  private Venue venue;
 
-  public TeamListItem(int teamId, String teamName, String teamLogo, String founded, String country, String national, String venueName, String venueAddress, String venueCity, String venueCapacity) {
-    this.teamId = teamId;
-    this.teamName = teamName;
-    this.teamLogo = teamLogo;
-    this.founded = founded;
-    this.country = country;
-    this.national = national;
-    this.venueName = venueName;
-    this.venueAddress = venueAddress;
-    this.venueCity = venueCity;
-    this.venueCapacity = venueCapacity;
+  public TeamListItem(Team team, Venue venue) {
+    this.team = team;
+    this.venue = venue;
   }
 
-  public int getTeamId() {
-    return teamId;
+  public Team getTeam() {
+    return team;
   }
 
-  public String getTeamName() {
-    return teamName;
-  }
-
-  public String getTeamLogo() {
-    return teamLogo;
-  }
-
-  public String getFounded() {
-    return founded;
-  }
-
-  public String getCountry() {
-    return country;
-  }
-
-  public String getNational() {
-    return national;
-  }
-
-  public String getVenueName() {
-    return venueName;
-  }
-
-  public String getVenueAddress() {
-    return venueAddress;
-  }
-
-  public String getVenueCity() {
-    return venueCity;
-  }
-
-  public String getVenueCapacity() {
-    return venueCapacity;
+  public Venue getVenue() {
+    return venue;
   }
 }

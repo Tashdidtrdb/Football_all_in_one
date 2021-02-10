@@ -11,7 +11,7 @@ public class Player {
     private boolean injured;
     private Birth birth;
 
-    public Player(int id, String name, int age, String photo, String nationality, String height, String weight, Boolean injured) {
+    public Player(int id, String name, int age, String photo, String nationality, String height, String weight, boolean injured, Birth birth) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -20,9 +20,6 @@ public class Player {
         this.height = height;
         this.weight = weight;
         this.injured = injured;
-    }
-
-    public Player(Birth birth) {
         this.birth = birth;
     }
 

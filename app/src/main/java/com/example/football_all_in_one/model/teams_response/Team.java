@@ -1,6 +1,6 @@
 package com.example.football_all_in_one.model.teams_response;
 
-public class Teams {
+public class Team {
     private int id;
     private String name;
     private String country;
@@ -9,7 +9,7 @@ public class Teams {
     private String logo;
 
     // Constructor
-    public Teams(int id, String name, String country, int founded, boolean national, String logo) {
+    public Team(int id, String name, String country, int founded, boolean national, String logo) {
         this.id = id;
         this.name = name;
         this.country = country;
