@@ -59,7 +59,8 @@ public interface ApiFootball {
   Call<PlayersResponse> getPlayersResponse(
     @Query("league") int league_id,
     @Query("season") int season_id,
-    @Query("team") int team_id
+    @Query("team") int team_id,
+    @Query("page") int page
   );
 
   //Get last 2 fixtures for one team in a league

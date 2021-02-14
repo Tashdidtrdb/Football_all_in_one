@@ -6,7 +6,6 @@ public class Standing {
     private int points;
     private String group;
 
-    // Constructor
     public Standing(int rank, Team team, int points, String group) {
         this.rank = rank;
         this.team = team;

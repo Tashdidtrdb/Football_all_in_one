@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/layout"
     android:background="@drawable/highlight_bg"
     tools:context=".StatisticsActivity">
 
@@ -30,9 +31,9 @@
         android:id="@+id/stats_table"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:scaleType="fitXY"
         android:layout_marginHorizontal="10dp"
         android:layout_marginBottom="50dp"
+        android:scaleType="fitXY"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -441,4 +442,42 @@
         app:layout_constraintStart_toStartOf="@+id/avg_goals_for_all"
         app:layout_constraintTop_toTopOf="@+id/stats_top"
         app:layout_constraintVertical_bias="0.74" />
+
+    <ImageView
+        android:id="@+id/football"
+        android:layout_width="136dp"
+        android:layout_height="68dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/hexagonal_football" />
+
+    <TextView
+        android:id="@+id/wait"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/arsenal"
+        android:text="Loading ..."
+        android:textColor="#80FFFFFF"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/football"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/page_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="league_highlight,stats_top,stats_table,team_logo,team_name,games_played_home,games_played_away,games_played_all,wins_home,wins_away,wins_all,draws_home,draws_away,draws_all,loss_home,loss_away,loss_all,goals_for_home,goals_for_away,goals_for_all,goals_against_home,goals_against_away,goals_against_all,avg_goals_for_home,avg_goals_for_away,avg_goals_for_all,avg_goals_against_home,avg_goals_against_away,avg_goals_against_all" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/loading_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:constraint_referenced_ids="football,wait" />
 </androidx.constraintlayout.widget.ConstraintLayout>

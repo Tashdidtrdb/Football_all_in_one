@@ -1,6 +1,8 @@
 package com.example.football_all_in_one;
 
 import android.content.Context;
+import android.content.Intent;
+import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,8 +26,13 @@ import com.example.football_all_in_one.model.fixtures_response.Teams;
 import com.example.football_all_in_one.model.fixtures_response.Venue;
 import com.example.football_all_in_one.model.team_statistics_for_a_fixture_response.Statistics;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 public class FixtureListAdapter extends RecyclerView.Adapter<FixtureListAdapter.FixtureListViewHolder> {
   private Context context;
@@ -73,42 +80,66 @@ public class FixtureListAdapter extends RecyclerView.Adapter<FixtureListAdapter.
     holder.homeScore.setText(String.valueOf(goals.getHome()));
     holder.awayScore.setText(String.valueOf(goals.getAway()));
     holder.elapsedTime.setText(String.valueOf(status.getElapsed()) + "'");
-    holder.dateTime.setText(fixture.getDate());
+    holder.dateTime.setText(holder.getDateTime(fixture.getTimestamp()));
     holder.status.setText(status.getLongstatus());
     holder.homeTeamName.setText(teams.getHome().getName());
     holder.awayTeamName.setText(teams.getAway().getName());
     Glide.with(context).load(teams.getHome().getLogo()).into(holder.homeTeamLogo);
     Glide.with(context).load(teams.getAway().getLogo()).into(holder.awayTeamLogo);
 
-    for (int i = 0; i < homeStats.size(); i++) {
-      holder.stats[i].setText(homeStats.get(i).getType());
-      holder.statsValueHome[i].setText(String.valueOf(homeStats.get(i).getValue()));
-      holder.statsPercentageHome[i].setProgress(holder.getHomePercentage(homeStats.get(i).getValue(), awayStats.get(i).getValue()));
-      holder.statsPercentageAway[i].setProgress(holder.getAwayPercentage(homeStats.get(i).getValue(), awayStats.get(i).getValue()));
-      holder.statsValueAway[i].setText(String.valueOf(awayStats.get(i).getValue()));
+    if (homeStats != null) {
+      for (int i = 0; i < homeStats.size(); i++) {
+        holder.stats[i].setText(homeStats.get(i).getType());
+
+        int homeStatValue, awayStatValue;
+
+        if (homeStats.get(i).getValue() == null) homeStatValue = 0;
+        else homeStatValue = holder.convertStatValueToInt(homeStats.get(i).getValue().toString());
+
+        if (awayStats.get(i).getValue() == null) awayStatValue = 0;
+        else awayStatValue = holder.convertStatValueToInt(awayStats.get(i).getValue().toString());
+
+        holder.statsValueHome[i].setText(String.valueOf(homeStatValue));
+        holder.statsValueAway[i].setText(String.valueOf(awayStatValue));
+
+        holder.statsPercentageHome[i].setProgress(holder.getHomePercentage(homeStatValue, awayStatValue));
+        holder.statsPercentageAway[i].setProgress(holder.getAwayPercentage(homeStatValue, awayStatValue));
+      }
+    } else {
+      for (int i = 0; i < 16; i++) {
+        holder.stats[i].setVisibility(View.INVISIBLE);
+        holder.statsValueHome[i].setVisibility(View.INVISIBLE);
+        holder.statsPercentageHome[i].setVisibility(View.INVISIBLE);
+        holder.statsValueAway[i].setVisibility(View.INVISIBLE);
+        holder.statsPercentageAway[i].setVisibility(View.INVISIBLE);
+      }
     }
 
     holder.homeFormation.setText("Formation: " + homeFormation);
     holder.awayFormation.setText("Formation: " + awayFormation);
 
     for (int i = 0; i < 11; i++) {
-      holder.homeStartingNumber[i].setText(String.valueOf(homeStartingXI.get(i).getNumber()));
-      holder.homeStartingName[i].setText(homeStartingXI.get(i).getName());
-      holder.homeStartingPosition[i].setText(homeStartingXI.get(i).getPos());
+      if (homeStartingXI.isEmpty()) break;
 
-      holder.awayStartingNumber[i].setText(String.valueOf(awayStartingXI.get(i).getNumber()));
-      holder.awayStartingName[i].setText(awayStartingXI.get(i).getName());
-      holder.awayStartingPosition[i].setText(awayStartingXI.get(i).getPos());
+      holder.homeStartingNumber[i].setText(String.valueOf(homeStartingXI.get(i).getPlayerInfo().getNumber()));
+      holder.homeStartingName[i].setText(homeStartingXI.get(i).getPlayerInfo().getName());
+      holder.homeStartingPosition[i].setText(homeStartingXI.get(i).getPlayerInfo().getPos());
+
+      holder.awayStartingNumber[i].setText(String.valueOf(awayStartingXI.get(i).getPlayerInfo().getNumber()));
+      holder.awayStartingName[i].setText(awayStartingXI.get(i).getPlayerInfo().getName());
+      holder.awayStartingPosition[i].setText(awayStartingXI.get(i).getPlayerInfo().getPos());
     }
 
     for (int i = 0; i < 7; i++) {
-      holder.homeSubstitutesNumber[i].setText(String.valueOf(homeSubstitutes.get(i).getNumber()));
-      holder.homeSubstitutesName[i].setText(homeSubstitutes.get(i).getName());
-      holder.homeSubstitutesPosition[i].setText(homeSubstitutes.get(i).getPos());
+      if (homeSubstitutes.isEmpty()) break;
 
-      holder.awaySubstitutesNumber[i].setText(String.valueOf(awaySubstitutes.get(i).getNumber()));
-      holder.awaySubstitutesName[i].setText(awaySubstitutes.get(i).getName());
-      holder.awaySubstitutesPosition[i].setText(awaySubstitutes.get(i).getPos());
+      holder.homeSubstitutesNumber[i].setText(String.valueOf(homeSubstitutes.get(i).getPlayerInfo().getNumber()));
+      holder.homeSubstitutesName[i].setText(homeSubstitutes.get(i).getPlayerInfo().getName());
+      holder.homeSubstitutesPosition[i].setText(homeSubstitutes.get(i).getPlayerInfo().getPos());
+
+      holder.awaySubstitutesNumber[i].setText(String.valueOf(awaySubstitutes.get(i).getPlayerInfo().getNumber()));
+      holder.awaySubstitutesName[i].setText(awaySubstitutes.get(i).getPlayerInfo().getName());
+      holder.awaySubstitutesPosition[i].setText(awaySubstitutes.get(i).getPlayerInfo().getPos());
     }
 
     holder.itemView.setOnClickListener(v -> {
@@ -255,11 +286,11 @@ public class FixtureListAdapter extends RecyclerView.Adapter<FixtureListAdapter.
         idString = "home_player_" + current.toString() + "_name";
         idInt = itemView.getResources().getIdentifier(idString, "id", context.getPackageName());
         homeStartingName[i] = itemView.findViewById(idInt);
+        homeStartingName[i].setSelected(true);
 
         idString = "home_player_" + current.toString() + "_position";
         idInt = itemView.getResources().getIdentifier(idString, "id", context.getPackageName());
         homeStartingPosition[i] = itemView.findViewById(idInt);
-
 
         idString = "away_player_" + current.toString() + "_number";
         idInt = itemView.getResources().getIdentifier(idString, "id", context.getPackageName());
@@ -268,6 +299,7 @@ public class FixtureListAdapter extends RecyclerView.Adapter<FixtureListAdapter.
         idString = "away_player_" + current.toString() + "_name";
         idInt = itemView.getResources().getIdentifier(idString, "id", context.getPackageName());
         awayStartingName[i] = itemView.findViewById(idInt);
+        awayStartingName[i].setSelected(true);
 
         idString = "away_player_" + current.toString() + "_position";
         idInt = itemView.getResources().getIdentifier(idString, "id", context.getPackageName());
@@ -284,11 +316,11 @@ public class FixtureListAdapter extends RecyclerView.Adapter<FixtureListAdapter.
         idString = "home_substitute_" + current.toString() + "_name";
         idInt = itemView.getResources().getIdentifier(idString, "id", context.getPackageName());
         homeSubstitutesName[i] = itemView.findViewById(idInt);
+        homeSubstitutesName[i].setSelected(true);
 
         idString = "home_substitute_" + current.toString() + "_position";
         idInt = itemView.getResources().getIdentifier(idString, "id", context.getPackageName());
         homeSubstitutesPosition[i] = itemView.findViewById(idInt);
-
 
         idString = "away_substitute_" + current.toString() + "_number";
         idInt = itemView.getResources().getIdentifier(idString, "id", context.getPackageName());
@@ -297,11 +329,26 @@ public class FixtureListAdapter extends RecyclerView.Adapter<FixtureListAdapter.
         idString = "away_substitute_" + current.toString() + "_name";
         idInt = itemView.getResources().getIdentifier(idString, "id", context.getPackageName());
         awaySubstitutesName[i] = itemView.findViewById(idInt);
+        awaySubstitutesName[i].setSelected(true);
 
         idString = "away_substitute_" + current.toString() + "_position";
         idInt = itemView.getResources().getIdentifier(idString, "id", context.getPackageName());
         awaySubstitutesPosition[i] = itemView.findViewById(idInt);
       }
+    }
+
+    private String getDateTime(long timestamp) {
+      Calendar calendar = Calendar.getInstance(Locale.getDefault());
+      calendar.setTimeInMillis(timestamp * 1000);
+      return DateFormat.format("dd-MM-yyyy hh:mm", calendar).toString();
+    }
+
+    int convertStatValueToInt(String statValue) {
+      statValue = statValue.substring(0, statValue.length() - 1);
+      if (statValue.endsWith(".")) {
+        statValue = statValue.substring(0, statValue.length() - 1);
+      }
+      return Integer.parseInt(statValue);
     }
 
     int getHomePercentage(int home, int away) {

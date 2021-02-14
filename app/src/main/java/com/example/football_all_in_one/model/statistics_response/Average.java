@@ -5,7 +5,6 @@ public class Average {
     private String away;
     private String total;
 
-    // Constructor
     public Average(String home, String away, String total) {
         this.home = home;
         this.away = away;

@@ -4,14 +4,13 @@ import com.google.gson.annotations.SerializedName;
 
 public class StatisticsResponse {
     @SerializedName("response")
-    private ResponseObject responseObject;
+    private StatisticsResponseObject statisticsResponseObject;
 
-    // Constructor
-    public StatisticsResponse(ResponseObject responseObject) {
-        this.responseObject = responseObject;
+    public StatisticsResponse(StatisticsResponseObject statisticsResponseObject) {
+        this.statisticsResponseObject = statisticsResponseObject;
     }
 
-    public ResponseObject getResponseObject() {
-        return responseObject;
+    public StatisticsResponseObject getStatisticsResponseObject() {
+        return statisticsResponseObject;
     }
 }

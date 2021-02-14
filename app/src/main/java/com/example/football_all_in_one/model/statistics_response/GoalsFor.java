@@ -4,7 +4,6 @@ public class GoalsFor {
     private Score total;
     private Average average;
 
-    // Constructor
     public GoalsFor(Score total, Average average) {
         this.total = total;
         this.average = average;

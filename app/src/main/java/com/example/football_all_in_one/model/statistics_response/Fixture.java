@@ -6,7 +6,6 @@ public class Fixture {
     private Score draws;
     private Score loses;
 
-    // Constructor
     public Fixture(Score played, Score wins, Score draws, Score loses) {
         this.played = played;
         this.wins = wins;

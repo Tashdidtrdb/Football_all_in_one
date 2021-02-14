@@ -68,11 +68,11 @@ public class TeamListAdapter extends RecyclerView.Adapter<TeamListAdapter.TeamLi
       }
     });
 
-    holder.statsButton.setOnClickListener(v -> visitStatisticsPage(team.getId(), team.getLogo(), leagueId, season));
+    holder.statsButton.setOnClickListener(v -> visitStatisticsPage(team.getId(), team.getName(), team.getLogo(), leagueId, season));
 
     holder.fixturesButton.setOnClickListener(v -> visitFixturesPage(team.getId(), leagueId, season));
 
-    holder.playersButton.setOnClickListener(v -> visitPlayersPage(team.getId(), team.getLogo(), leagueId, season));
+    holder.playersButton.setOnClickListener(v -> visitPlayersPage(team.getId(), team.getName(), team.getLogo(), leagueId, season));
   }
 
   @Override
@@ -103,12 +103,15 @@ public class TeamListAdapter extends RecyclerView.Adapter<TeamListAdapter.TeamLi
       playersButton = itemView.findViewById(R.id.players_button);
       detailsGroup = itemView.findViewById(R.id.details_group);
       constraintLayout = itemView.findViewById(R.id.card_bg);
+
+      teamName.setSelected(true);
     }
   }
 
-  private void visitStatisticsPage(int teamId, String teamLogo, int leagueId, int season) {
+  private void visitStatisticsPage(int teamId, String teamName, String teamLogo, int leagueId, int season) {
     Intent intent = new Intent(context, StatisticsActivity.class);
     intent.putExtra(MainActivity.EXTRA + "teamId", teamId);
+    intent.putExtra(MainActivity.EXTRA + "teamName", teamName);
     intent.putExtra(MainActivity.EXTRA + "teamLogo", teamLogo);
     intent.putExtra(MainActivity.EXTRA + "leagueId", leagueId);
     intent.putExtra(MainActivity.EXTRA + "season", season);
@@ -123,9 +126,10 @@ public class TeamListAdapter extends RecyclerView.Adapter<TeamListAdapter.TeamLi
     context.startActivity(intent);
   }
 
-  private void visitPlayersPage(int teamId, String teamLogo, int leagueId, int season) {
+  private void visitPlayersPage(int teamId, String teamName, String teamLogo, int leagueId, int season) {
     Intent intent = new Intent(context, PlayersActivity.class);
     intent.putExtra(MainActivity.EXTRA + "teamId", teamId);
+    intent.putExtra(MainActivity.EXTRA + "teamName", teamName);
     intent.putExtra(MainActivity.EXTRA + "teamLogo", teamLogo);
     intent.putExtra(MainActivity.EXTRA + "leagueId", leagueId);
     intent.putExtra(MainActivity.EXTRA + "season", season);

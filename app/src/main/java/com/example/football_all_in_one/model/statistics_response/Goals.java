@@ -8,7 +8,6 @@ public class Goals {
     @SerializedName("against")
     private GoalsAgainst goalsAgainst;
 
-    // Constructor
     public Goals(GoalsFor goalsFor, GoalsAgainst goalsAgainst) {
         this.goalsFor = goalsFor;
         this.goalsAgainst = goalsAgainst;

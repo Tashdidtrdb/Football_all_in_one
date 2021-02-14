@@ -1,6 +1,6 @@
 package com.example.football_all_in_one.model.season_response;
 
-import com.example.football_all_in_one.model.standing_response.ResponseList;
+import com.example.football_all_in_one.model.season_response.SeasonResponseList;
 import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;

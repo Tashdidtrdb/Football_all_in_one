@@ -16,8 +16,6 @@ import com.bumptech.glide.Glide;
 import java.util.List;
 
 public class StandingListAdapter extends RecyclerView.Adapter<StandingListAdapter.StandingListViewHolder> {
-  public static final String EXTRA = "com.example.football_all_in_one_";
-
   private Context context;
   private List<StandingListItem> standingListItems;
   private int leagueId, season;
@@ -41,12 +39,12 @@ public class StandingListAdapter extends RecyclerView.Adapter<StandingListAdapte
   public void onBindViewHolder(@NonNull StandingListViewHolder holder, int position) {
     StandingListItem standingListItem = standingListItems.get(position);
     holder.teamName.setText(standingListItem.getTeamName());
-    holder.rank.setText(standingListItem.getRank());
-    holder.points.setText(standingListItem.getPoints());
+    holder.rank.setText(String.valueOf(standingListItem.getRank()));
+    holder.points.setText(String.valueOf(standingListItem.getPoints()));
     holder.group.setText(standingListItem.getGroup());
     Glide.with(context).load(standingListItem.getTeamLogo()).into(holder.teamLogo);
 
-    holder.itemView.setOnClickListener(v -> visitStatisticsPage(standingListItem.getTeamId(), leagueId, season));
+    holder.itemView.setOnClickListener(v -> visitStatisticsPage(standingListItem.getTeamId(), standingListItem.getTeamName(), standingListItem.getTeamLogo(), leagueId, season));
   }
 
   @Override
@@ -65,13 +63,19 @@ public class StandingListAdapter extends RecyclerView.Adapter<StandingListAdapte
       rank = itemView.findViewById(R.id.rank);
       points = itemView.findViewById(R.id.points);
       group = itemView.findViewById(R.id.group);
+
+      teamName.setSelected(true);
+      group.setSelected(true);
     }
   }
 
-  private void visitStatisticsPage(int teamId, int leagueId, int season) {
+  private void visitStatisticsPage(int teamId, String teamName, String teamLogo, int leagueId, int season) {
     Intent intent = new Intent(context, StatisticsActivity.class);
-    intent.putExtra(EXTRA + "leagueId", leagueId);
-    intent.putExtra(EXTRA + "season", season);
+    intent.putExtra(MainActivity.EXTRA + "teamId", teamId);
+    intent.putExtra(MainActivity.EXTRA + "teamName", teamName);
+    intent.putExtra(MainActivity.EXTRA + "teamLogo", teamLogo);
+    intent.putExtra(MainActivity.EXTRA + "leagueId", leagueId);
+    intent.putExtra(MainActivity.EXTRA + "season", season);
     context.startActivity(intent);
   }
 }

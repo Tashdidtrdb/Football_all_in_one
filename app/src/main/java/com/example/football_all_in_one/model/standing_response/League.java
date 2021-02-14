@@ -8,7 +8,6 @@ public class League {
     @SerializedName("standings")
     private ArrayList<ArrayList<Standing>> groups;
 
-    // Constructor
     public League(ArrayList<ArrayList<Standing>> groups) {
         this.groups = groups;
     }

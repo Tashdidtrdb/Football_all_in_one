@@ -6,15 +6,13 @@ import java.util.ArrayList;
 
 public class StandingResponse {
     @SerializedName("response")
-    ArrayList<ResponseList> responseList;
+    ArrayList<StandingResponseList> standingResponseList;
 
-
-    // Constructor
-    public StandingResponse(ArrayList<ResponseList> responseList) {
-        this.responseList = responseList;
+    public StandingResponse(ArrayList<StandingResponseList> standingResponseList) {
+        this.standingResponseList = standingResponseList;
     }
 
-    public ArrayList<ResponseList> getResponseList() {
-        return responseList;
+    public ArrayList<StandingResponseList> getStandingResponseList() {
+        return standingResponseList;
     }
 }

@@ -5,7 +5,6 @@ public class Score {
     private int away;
     private int total;
 
-    // Constructor
     public Score(int home, int away, int total) {
         this.home = home;
         this.away = away;

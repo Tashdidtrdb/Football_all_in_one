@@ -51,7 +51,6 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Pl
     Cards cards = playerListItem.getCards();
     Penalty penalty = playerListItem.getPenalty();
 
-//    holder.playerNumber.setText(String.valueOf(games.getNumber()));
     holder.playerName.setText(player.getName());
     holder.playerPosition.setText(games.getPosition());
     holder.age.setText("Age: " + String.valueOf(player.getAge()));
@@ -133,6 +132,8 @@ public class PlayerListAdapter extends RecyclerView.Adapter<PlayerListAdapter.Pl
       penaltySaved = itemView.findViewById(R.id.penalty_saved);
       detailsGroup = itemView.findViewById(R.id.details_group);
       constraintLayout = itemView.findViewById(R.id.card_bg);
+
+      playerName.setSelected(true);
     }
   }
 }

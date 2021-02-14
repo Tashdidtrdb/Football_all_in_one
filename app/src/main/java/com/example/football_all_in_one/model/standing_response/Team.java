@@ -5,7 +5,6 @@ public class Team {
     private String name;
     private String logo;
 
-    // Constructor
     public Team(int id, String name, String logo) {
         this.id = id;
         this.name = name;

@@ -1,10 +1,9 @@
 package com.example.football_all_in_one.model.standing_response;
 
-public class ResponseList {
+public class StandingResponseList {
     private League league;
 
-    // Constructor
-    public ResponseList(League league) {
+    public StandingResponseList(League league) {
         this.league = league;
     }
 

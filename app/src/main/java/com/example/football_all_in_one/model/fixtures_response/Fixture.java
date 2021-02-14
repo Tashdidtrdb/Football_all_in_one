@@ -1,18 +1,14 @@
 package com.example.football_all_in_one.model.fixtures_response;
 
-import com.google.gson.annotations.SerializedName;
-
-import java.util.ArrayList;
-
 public class Fixture {
     private int id;
     private String referee;
-    private int timestamp;
+    private long timestamp;
     private String date;
     private Venue venue;
     private Status status;
 
-    public Fixture(int id, String referee, int timestamp, String date, Venue venue, Status status) {
+    public Fixture(int id, String referee, long timestamp, String date, Venue venue, Status status) {
         this.id = id;
         this.referee = referee;
         this.timestamp = timestamp;
@@ -25,7 +21,7 @@ public class Fixture {
 
     public String getReferee() { return referee; }
 
-    public int getTimestamp() { return timestamp; }
+    public long getTimestamp() { return timestamp; }
 
     public String getDate() { return date; }
 

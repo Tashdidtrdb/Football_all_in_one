@@ -9,6 +9,7 @@
     android:layout_marginHorizontal="10dp"
     android:layout_marginVertical="5dp"
     android:padding="10dp"
+    android:backgroundTint="@android:color/holo_red_light"
     android:background="@drawable/collapsed_team_item_bg">
 
     <ImageView
@@ -25,13 +26,18 @@
 
     <TextView
         android:id="@+id/team_name"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:paddingLeft="10dp"
         android:fontFamily="@font/arsenal"
         android:text="Manchester United"
         android:textSize="18sp"
         android:textStyle="bold"
         android:textColor="#80FFFFFF"
+        android:singleLine="true"
+        android:ellipsize="marquee"
+        android:marqueeRepeatLimit ="marquee_forever"
+        android:scrollHorizontally="true"
         app:layout_constraintBottom_toBottomOf="@+id/team_logo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.02"

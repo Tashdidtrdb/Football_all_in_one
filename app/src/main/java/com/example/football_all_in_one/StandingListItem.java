@@ -2,13 +2,13 @@ package com.example.football_all_in_one;
 
 public class StandingListItem {
   private int teamId;
-  private String rank;
+  private int rank;
   private String teamName;
   private String teamLogo;
-  private String points;
+  private int points;
   private String group;
 
-  public StandingListItem(int teamId, String rank, String teamName, String teamLogo, String points, String group) {
+  public StandingListItem(int teamId, int rank, String teamName, String teamLogo, int points, String group) {
     this.teamId = teamId;
     this.rank = rank;
     this.teamName = teamName;
@@ -21,7 +21,7 @@ public class StandingListItem {
     return teamId;
   }
 
-  public String getRank() {
+  public int getRank() {
     return rank;
   }
 
@@ -33,7 +33,7 @@ public class StandingListItem {
     return teamLogo;
   }
 
-  public String getPoints() {
+  public int getPoints() {
     return points;
   }
 
