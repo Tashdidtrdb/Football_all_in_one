@@ -102,7 +102,7 @@ public class FixturesActivity extends AppCompatActivity {
     protected Boolean doInBackground(Boolean... booleans) {
       ApiFootball api = MainActivity.api;
 
-      Call<FixturesResponse> call = api.getFixturesResponse(leagueId, season, teamId, 1, null);
+      Call<FixturesResponse> call = api.getFixturesResponse(leagueId, season, teamId, 2, null);
       FixturesResponse fixturesResponse;
       try {
         fixturesResponse = call.execute().body();

@@ -32,7 +32,7 @@ public class IdMap extends Application {
 
   private void initializeLeagueId() {
     leagueId[0] = 2;
-    leagueId[1] = 104;
+    leagueId[1] = 140;
     leagueId[2] = 39;
     leagueId[3] = 45;
     leagueId[4] = 3;
@@ -46,7 +46,7 @@ public class IdMap extends Application {
 
   private void initializeSeasonId() {
     season[0] = 2020;
-    season[1] = 2021;
+    season[1] = 2020;
     season[2] = 2020;
     season[3] = 2020;
     season[4] = 2020;
