@@ -8,3 +8,12 @@ Some notable information that a user can view are:
 - Fixtures and match statistics
 
 ![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/loading?raw=true)
+![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/home?raw=true)
+![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/teams?raw=true)
+![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/standings?raw=true)
+![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/statistics?raw=true)
+![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/players?raw=true)
+![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/player%20details?raw=true)
+![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/fixtures?raw=true)
+![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/fixture%20stats?raw=true)
+![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/fixture%20lineup?raw=true)
