@@ -6,3 +6,5 @@ Some notable information that a user can view are:
 - Team statistics in a particular league 
 - Information and statistics of the players of a particular team
 - Fixtures and match statistics
+
+![alt text](https://github.com/Tashdidtrdb/Football_all_in_one/blob/master/Screenshots/loading?raw=true)
